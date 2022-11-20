@@ -16,6 +16,7 @@ const nextConfig = {
 
   images: {
     unoptimized: true,
+    loader: 'custom'
   },
 
   ...serverSettings,
