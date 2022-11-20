@@ -1,13 +1,17 @@
 const serverSettings = {}
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true' || false
+const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+// trim off `<owner>/`
 
 if (isGithubActions) {
-  // trim off `<owner>/`
-  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
-
   serverSettings.basePath = `/${repo}`
   serverSettings.assetPrefix = `/${repo}/`
+
+  serverSettings.env = {
+    isGithubActions,
+    assetPrefix: `/${repo}/`,
+  }
 }
 
 const nextConfig = {
@@ -16,7 +20,7 @@ const nextConfig = {
 
   images: {
     unoptimized: true,
-    loader: 'custom'
+    // loader: 'custom'
   },
 
   ...serverSettings,
