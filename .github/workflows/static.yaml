@@ -1,8 +1,9 @@
-name: Static
+name: static build
 
 on:
-  workflow_dispatch:
-    inputs:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
