@@ -1,16 +1,17 @@
 const serverSettings = {}
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true' || false
-const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
-// trim off `<owner>/`
 
 if (isGithubActions) {
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+  // trim off `<owner>/`
+
   serverSettings.basePath = `/${repo}`
   serverSettings.assetPrefix = `/${repo}/`
 
   serverSettings.env = {
     isGithubActions,
-    assetPrefix: `/${repo}/`,
+    prefix: `/${repo}`,
   }
 }
 

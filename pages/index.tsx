@@ -10,9 +10,19 @@ const links = [
   { label: 'Kofi',      href: 'https://www.buymeacoffee.com/conradcoffee'     }
 ]
 
+const useImagePrefix = () => {
+  const isGithubActions = process.env.isGithubActions
+  const prefix = process.env.prefix
+
+  if (isGithubActions) {
+    return prefix
+  }
+
+  return ''
+}
+
 const IndexPage = () => {
-  console.log(process.env.isGithubActions)
-  console.log(process.env.assetPrefix)
+  const prefix = useImagePrefix()
   return (
     <Layout title="Conrad The Programmer">
       <div className="text-center mb-4">
@@ -20,7 +30,7 @@ const IndexPage = () => {
           width="460"
           height="460"
           alt="Avatar"
-          src="/assets/avatar-github.jpg"
+          src={`${prefix}/assets/avatar-github.jpg`}
           className="rounded-full w-32 mb-4 mx-auto"
         />
         <h5 className="text-xl font-medium leading-tight mb-2">Conrad The Programmer</h5>
