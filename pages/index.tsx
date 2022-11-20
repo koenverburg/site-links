@@ -1,5 +1,5 @@
-import Layout from '../components/Layout'
 import Image from 'next/image'
+import {Layout} from '../components/Layout'
 
 const links = [
   { label: 'Github',    href: 'https://github.com/koenverburg'                },
