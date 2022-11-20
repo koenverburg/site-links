@@ -2,12 +2,12 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 
 const links = [
-  { gradient: 'from-[#6EE7B7] to-[#FDE68A]', label: 'Github', href: 'https://github.com/koenverburg' },
-  { gradient: 'from-[#6EE7B7] to-[#FDE68A]', label: 'Twitter', href: 'https://twitter.com/koenverburg' },
-  { gradient: 'from-[#6EE7B7] to-[#FDE68A]', label: 'Twitch', href: 'https://www.twitch.tv/conradtheprogrammer' },
-  { gradient: 'from-[#6EE7B7] to-[#FDE68A]', label: 'Instagram', href: 'https://www.instagram.com/conradtheprogrammer' },
-  { gradient: 'from-[#6EE7B7] to-[#FDE68A]', label: 'Blog', href: 'https://koenverburg.medium.com' },
-  { gradient: 'from-[#6EE7B7] to-[#FDE68A]', label: 'Kofi', href: 'https://www.buymeacoffee.com/conradcoffee' }
+  { label: 'Github',    href: 'https://github.com/koenverburg'                },
+  { label: 'Twitter',   href: 'https://twitter.com/koenverburg'               },
+  { label: 'Twitch',    href: 'https://www.twitch.tv/conradtheprogrammer'     },
+  { label: 'Instagram', href: 'https://www.instagram.com/conradtheprogrammer' },
+  { label: 'Blog',      href: 'https://koenverburg.medium.com'                },
+  { label: 'Kofi',      href: 'https://www.buymeacoffee.com/conradcoffee'     }
 ]
 
 const IndexPage = () => (
@@ -22,10 +22,10 @@ const IndexPage = () => (
       <p className="text-gray-500">I write code and share my coding journey on these social media platforms</p>
     </div>
 
-    <ul className="text-center">
+    <ul className="flex flex-col justify-center max-w-sm mx-auto">
       {links.map(link =>
-        <li className={`rounded shadow-lg bg-gradient-to-r ${link.gradient}`}>
-          <a href={link.href} className={`block mb-4 px-6 py-4`} target="_blank">
+        <li className={`mb-4 p-1 text-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500`}>
+          <a href={link.href} className={`px-4 py-2 block text-black font-semibold rounded-full bg-white`} target="_blank">
             {link.label}
           </a>
         </li>

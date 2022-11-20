@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 
 type Props = {
@@ -8,7 +7,7 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div className="container pt-6">
+  <div className="container max-w-xl pt-6">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
