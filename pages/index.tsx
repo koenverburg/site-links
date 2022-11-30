@@ -40,7 +40,7 @@ const IndexPage = () => {
       <ul className="flex flex-col justify-center max-w-sm mx-auto">
         {links.map(link =>
           <li key={link.label} className={`mb-4 p-1 text-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500`}>
-            <a href={link.href} className={`px-4 py-2 block text-black font-semibold rounded-full bg-white`} target="_blank">
+            <a href={link.href} className={`px-4 py-2 block text-black font-semibold rounded-full bg-white`} target="_blank"  rel="noreferrer">
               {link.label}
             </a>
           </li>
