@@ -2,7 +2,7 @@ import Image from 'next/image'
 import {Layout} from '../components/Layout'
 
 const links = [
-  { label: 'Book a Call', href: 'https://appointments.lokiapp.live/consultant/WUJFxrwyO0MMZj6F9lEKOsVFtpx2', description: 'Looking to make your Dev Team move faster to production, career advice, or something less, Book a Video Call'},
+  { label: 'Book a Call', href: 'https://appointments.lokiapp.live/consultant/WUJFxrwyO0MMZj6F9lEKOsVFtpx2', description: 'Looking to make your Dev Team move faster to production, career advice, or something else, Book a Video Call'},
   { label: 'Github',         href: 'https://github.com/koenverburg'                },
   { label: 'Twitter',        href: 'https://twitter.com/koenverburg'               },
   { label: 'Twitch',         href: 'https://www.twitch.tv/conradtheprogrammer'     },
