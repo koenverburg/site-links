@@ -9,7 +9,9 @@ const links = [
   { label: 'Twitch', href: 'https://www.twitch.tv/conradtheprogrammer' },
   { label: 'Instagram', href: 'https://www.instagram.com/conradtheprogrammer' },
   { label: 'Blog', href: 'https://conradtheprogrammer.medium.com' },
-  { label: 'Buy me a Coffee', href: 'https://www.buymeacoffee.com/conradcoffee' }
+  { label: 'Buy me a Coffee', href: 'https://www.buymeacoffee.com/conradcoffee' },
+  { label: 'Products I use', href: 'https://kit.conradtheprogrammer.com' },
+  { label: 'Site', href: 'https://conradtheprogrammer.com' }
 ]
 
 const useImagePrefix = () => {
