@@ -8,6 +8,7 @@ const links = [
   { label: 'Twitter', href: 'https://twitter.com/koenverburg' },
   { label: 'YouTube', href: 'https://www.youtube.com/@conradtheprogrammer' },
   { label: 'Twitch', href: 'https://www.twitch.tv/conradtheprogrammer' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@conradtheprogrammer' },
   { label: 'Instagram', href: 'https://www.instagram.com/conradtheprogrammer' },
   { label: 'Blog', href: 'https://conradtheprogrammer.medium.com' },
   { label: 'Buy me a Coffee', href: 'https://www.buymeacoffee.com/conradcoffee' },
