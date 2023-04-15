@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Layout } from '../components/Layout'
 
 const links = [
-  { label: 'Buy My Reel Downloader Script', description: '', href: 'https://conradtheprogrammer.gumroad.com/l/instagram-reel-download-script' },
+  { label: 'How to Make More Money as a Software Engineer', description: '', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
   { label: 'Book a Call', href: 'https://appointments.lokiapp.live/consultant/WUJFxrwyO0MMZj6F9lEKOsVFtpx2', description: 'Looking to make your Dev Team move faster to production, career advice, or something else, Book a Video Call' },
   { label: 'Github', href: 'https://github.com/koenverburg' },
   { label: 'Twitter', href: 'https://twitter.com/koenverburg' },
