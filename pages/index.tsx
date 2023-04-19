@@ -2,8 +2,8 @@ import Image from 'next/image'
 import { Layout } from '../components/Layout'
 
 const links = [
-  { label: 'How to Make More Money as a Software Engineer', description: '', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
-  { label: 'Book a Call', href: 'https://appointments.lokiapp.live/consultant/WUJFxrwyO0MMZj6F9lEKOsVFtpx2', description: 'Looking to make your Dev Team move faster to production, career advice, or something else, Book a Video Call' },
+  { label: 'How to Make More Money as a Software Engineer', description: '^ PDF download ^', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
+  { label: 'Dotfiles', description: 'Config files for nvim, tmux, vscode, Mac, Linux and Windows', href: 'https://github.com/koenverburg/dotfiles'},
   { label: 'Github', href: 'https://github.com/koenverburg' },
   { label: 'Twitter', href: 'https://twitter.com/koenverburg' },
   { label: 'YouTube', href: 'https://www.youtube.com/@conradtheprogrammer' },
@@ -11,9 +11,10 @@ const links = [
   { label: 'TikTok', href: 'https://www.tiktok.com/@conradtheprogrammer' },
   { label: 'Instagram', href: 'https://www.instagram.com/conradtheprogrammer' },
   { label: 'Blog', href: 'https://conradtheprogrammer.medium.com' },
+  { label: 'Site', href: 'https://conradtheprogrammer.com' },
   { label: 'Buy me a Coffee', href: 'https://www.buymeacoffee.com/conradcoffee' },
   { label: 'Products I use', href: 'https://kit.conradtheprogrammer.com' },
-  { label: 'Site', href: 'https://conradtheprogrammer.com' }
+  { label: 'Book a Call', href: 'https://appointments.lokiapp.live/consultant/WUJFxrwyO0MMZj6F9lEKOsVFtpx2', description: 'Looking to make your Dev Team move faster to production, career advice, or something else, Book a Video Call' },
 ]
 
 const useImagePrefix = () => {
