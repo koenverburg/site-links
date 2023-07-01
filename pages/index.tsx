@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Layout } from '../components/Layout'
+import Plausible from "plausible-tracker";
 
 const links = [
   // { label: 'How to Make More Money as a Software Engineer', description: '^ PDF download ^', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
@@ -28,6 +29,21 @@ const useImagePrefix = () => {
   return ''
 }
 
+const { trackEvent } = Plausible()
+
+const handleClick = (label: string, url: string) => () =>
+  trackEvent(
+    "click",
+    {
+      props: {
+        label,
+      },
+    },
+    {
+      url,
+    }
+  );
+
 const IndexPage = () => {
   const prefix = useImagePrefix()
   return (
@@ -52,6 +68,7 @@ const IndexPage = () => {
                 href={link.href}
                 rel="noreferrer"
                 target="_blank"
+                onClick={handleClick(link.label, link.href)}
                 className={`px-4 py-2 block text-black font-semibold rounded-full bg-white umami--click--${link.label.replaceAll(' ', '-')}`}
               >
                 {link.label}
