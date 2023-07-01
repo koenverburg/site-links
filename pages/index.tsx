@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Layout } from '../components/Layout'
 
 const links = [
-  { label: 'How to Make More Money as a Software Engineer', description: '^ PDF download ^', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
+  // { label: 'How to Make More Money as a Software Engineer', description: '^ PDF download ^', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
   { label: 'Dotfiles', description: 'Config files for nvim, tmux, vscode, Mac, Linux and Windows', href: 'https://github.com/koenverburg/dotfiles'},
   { label: 'Github', href: 'https://github.com/koenverburg' },
   { label: 'Twitter', href: 'https://twitter.com/koenverburg' },
