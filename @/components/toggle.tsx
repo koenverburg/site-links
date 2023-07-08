@@ -1,40 +1,26 @@
-import * as React from "react"
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
-import { useTheme } from "next-themes"
-
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import * as React from "react";
+import { darkTheme, IconButton } from "@modulz/design-system";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
 
 export function ModeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme, theme } = useTheme();
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          {
-            theme === 'light'
-            ? <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            : <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" /> 
-          }
-          <span className="sr-only"></span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+    <IconButton
+      variant="ghost"
+      onClick={() => {
+        const newTheme = theme === "dark" ? "light" : "dark";
+
+        document.documentElement.classList.toggle(darkTheme.className);
+        document.documentElement.classList.toggle("light-theme");
+        document.documentElement.style.setProperty("color-scheme", newTheme);
+
+        // Finally, we still need to let `next-themes` know of the theme change so that it saves it to local storage.
+        setTheme(newTheme);
+      }}
+      aria-label="toggle a light and dark color scheme"
+    >
+      {theme === "light" ? <MoonIcon /> : <SunIcon />}
+    </IconButton>
+  );
 }

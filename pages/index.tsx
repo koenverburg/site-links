@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Layout } from "../components/Layout";
 import Plausible from "plausible-tracker";
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
 import { sections } from "../data";
+import { Button } from "@/components/ui/button";
 
 const useImagePrefix = () => {
   const isGithubActions = process.env.isGithubActions;
@@ -66,8 +67,19 @@ const IndexPage = () => {
               An open-source UI component library.
             </p>
           </div>
+
           <Separator className="my-4" />
-          <ul className="flex flex-col justify-center max-w-sm mx-auto">
+
+          <Button variant="outline" size="sm" asChild>
+            <a>
+              hii
+            </a>
+          </Button>
+
+          <ul
+            className="flex flex-col justify-center max-w-sm mx-auto"
+            key={section.label}
+          >
             {section.links.map((link) => (
               <li key={link.label} className="mb-4">
                 <span
