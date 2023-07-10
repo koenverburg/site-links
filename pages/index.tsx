@@ -31,7 +31,7 @@ const handleClick = (label: string, url: string) => () =>
     }
   );
 
-const IndexPage = () => {
+export default function IndexPage() {
   const prefix = useImagePrefix();
   return (
     <Layout title="Conrad The Programmer">
@@ -113,4 +113,3 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
