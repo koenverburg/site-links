@@ -3,7 +3,7 @@ export type Platform = {
   href: string
   status?: 'Live' | 'Coming Soon'
   description?: string
-  prek?: string
+  perk?: string
 }
 
 export type Section = {
