@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { Layout } from "../components/Layout";
-import Plausible from "plausible-tracker";
 import { Separator } from "@/components/ui/separator";
 import { sections } from "../data";
 import { Button } from "@/components/ui/button";
+import { handleClick } from "@/lib/utils";
+import { Item } from "../components/Item";
+import { Platform } from "@/lib/types";
 
 const useImagePrefix = () => {
   const isGithubActions = process.env.isGithubActions;
@@ -15,21 +17,6 @@ const useImagePrefix = () => {
 
   return "";
 };
-
-const { trackEvent } = Plausible();
-
-const handleClick = (label: string, url: string) => () =>
-  trackEvent(
-    "click",
-    {
-      props: {
-        label,
-      },
-    },
-    {
-      url,
-    }
-  );
 
 export default function IndexPage() {
   const prefix = useImagePrefix();
@@ -47,7 +34,7 @@ export default function IndexPage() {
           Conrad The Programmer
         </h5>
         <p className="text-gray-500">
-          Hi, I'm <strong>Conrad</strong>. A fulltime programmer at Adidas, I
+          Hi, I'm <strong className="text-orange-500">Conrad</strong>. A fulltime programmer at Adidas, I
           also stream, blog and create YouTube videos about my live as a
           software engineer and topics that I'm interested in.
           <br />
@@ -59,52 +46,23 @@ export default function IndexPage() {
 
       {sections.map((section) => (
         <div>
-          <div className="space-y-1">
+
+          <div className="space-y-1 mb-3">
             <h4 className="text-sm font-medium leading-none">
               {section.label}
             </h4>
-            <p className="text-sm text-muted-foreground">
-              An open-source UI component library.
-            </p>
+            {section.description &&
+              <p className="text-sm text-muted-foreground">
+                An open-source UI component library.
+              </p>
+            }
           </div>
 
-          <Separator className="my-4" />
-
-          <Button variant="outline" size="sm" asChild>
-            <a>
-              hii
-            </a>
-          </Button>
-
           <ul
-            className="flex flex-col justify-center max-w-sm mx-auto"
+            className="flex flex-col justify-center xmax-w-sm mx-auto"
             key={section.label}
           >
-            {section.links.map((link) => (
-              <li key={link.label} className="mb-4">
-                <span
-                  className={`block mb-2 p-1 text-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500`}
-                >
-                  <a
-                    href={link.href}
-                    rel="noreferrer"
-                    target="_blank"
-                    onClick={handleClick(link.label, link.href)}
-                    className={`px-4 py-2 block text-black font-semibold rounded-full bg-white umami--click--${link.label.replaceAll(
-                      " ",
-                      "-"
-                    )}`}
-                  >
-                    {link.label}
-                  </a>
-                </span>
-                {!link.description ? null : (
-                  <p className={`text-center text-gray-500`}>
-                    {link.description}
-                  </p>
-                )}
-              </li>
-            ))}
+            {section.links.map((link: Platform) => <Item platform={link} />)}
           </ul>
           <hr className="mb-4 mt-4" />
         </div>
@@ -113,3 +71,4 @@ export default function IndexPage() {
   );
 };
 
+      //<Separator className="my-4" />

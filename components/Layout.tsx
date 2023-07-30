@@ -67,9 +67,11 @@ export const Layout = ({
 
         <div className="relativex">{children}</div>
       </div>
-      <div className="absolute top-3 left-3 w-full h-full">
-        <ModeToggle />
-      </div>
+      {/*
+        <div className="absolute top-3 left-3 w-full h-full">
+          <ModeToggle />
+        </div>
+      */}
     </div>
   );
 };
