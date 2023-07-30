@@ -1,51 +1,25 @@
-import Image from 'next/image'
-import { Layout } from '../components/Layout'
-import Plausible from "plausible-tracker";
-
-const links = [
-  // { label: 'How to Make More Money as a Software Engineer', description: '^ PDF download ^', href: 'https://conradtheprogrammer.gumroad.com/l/how-to-make-money-on-the-side-as-a-software-engineer' },
-  { label: 'Dotfiles', description: 'Config files for nvim, tmux, vscode, Mac, Linux and Windows', href: 'https://github.com/koenverburg/dotfiles'},
-  { label: 'Github', href: 'https://github.com/koenverburg' },
-  { label: 'Twitter', href: 'https://twitter.com/koenverburg' },
-  { label: 'YouTube', href: 'https://www.youtube.com/@conradtheprogrammer' },
-  { label: 'Twitch', href: 'https://www.twitch.tv/conradtheprogrammer' },
-  { label: 'TikTok', href: 'https://www.tiktok.com/@conradtheprogrammer' },
-  { label: 'Instagram', href: 'https://www.instagram.com/conradtheprogrammer' },
-  { label: 'Blog', href: 'https://conradtheprogrammer.medium.com' },
-  { label: 'Site', href: 'https://conradtheprogrammer.com' },
-  { label: 'Buy me a Coffee', href: 'https://www.buymeacoffee.com/conradcoffee' },
-  { label: 'Products I use', href: 'https://kit.conradtheprogrammer.com' },
-  { label: 'Book a Call', href: 'https://appointments.lokiapp.live/consultant/WUJFxrwyO0MMZj6F9lEKOsVFtpx2', description: 'Looking to make your Dev Team move faster to production, career advice, or something else, Book a Video Call' },
-]
+import Image from "next/image";
+import { Layout } from "../components/Layout";
+import { Separator } from "@/components/ui/separator";
+import { sections } from "../data";
+import { Button } from "@/components/ui/button";
+import { handleClick } from "@/lib/utils";
+import { Item } from "../components/Item";
+import { Platform } from "@/lib/types";
 
 const useImagePrefix = () => {
-  const isGithubActions = process.env.isGithubActions
-  const prefix = process.env.prefix
+  const isGithubActions = process.env.isGithubActions;
+  const prefix = process.env.prefix;
 
   if (isGithubActions) {
-    return prefix
+    return prefix;
   }
 
-  return ''
-}
+  return "";
+};
 
-const { trackEvent } = Plausible()
-
-const handleClick = (label: string, url: string) => () =>
-  trackEvent(
-    "click",
-    {
-      props: {
-        label,
-      },
-    },
-    {
-      url,
-    }
-  );
-
-const IndexPage = () => {
-  const prefix = useImagePrefix()
+export default function IndexPage() {
+  const prefix = useImagePrefix();
   return (
     <Layout title="Conrad The Programmer">
       <div className="text-center mb-4">
@@ -56,30 +30,45 @@ const IndexPage = () => {
           src={`${prefix}/assets/new-avatar.jpg`}
           className="rounded-full w-32 mb-4 mx-auto"
         />
-        <h5 className="text-xl font-medium leading-tight mb-2">Conrad The Programmer</h5>
-        <p className="text-gray-500">I write code and share my coding journey on these social media platforms</p>
+        <h5 className="text-xl font-bold leading-tight mb-2">
+          Conrad The Programmer
+        </h5>
+        <p className="text-gray-500">
+          Hi, I'm <strong className="text-orange-500">Conrad</strong>. A fulltime programmer at Adidas, I
+          also stream, blog and create YouTube videos about my live as a
+          software engineer and topics that I'm interested in.
+          <br />
+          <br />
+          In my spare time I write SaaS applications, check out the project
+          section below to see where I'm working on.
+        </p>
       </div>
 
-      <ul className="flex flex-col justify-center max-w-sm mx-auto">
-        {links.map(link =>
-          <li key={link.label} className="mb-4">
-            <span className={`block mb-2 p-1 text-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500`}>
-              <a 
-                href={link.href}
-                rel="noreferrer"
-                target="_blank"
-                onClick={handleClick(link.label, link.href)}
-                className={`px-4 py-2 block text-black font-semibold rounded-full bg-white umami--click--${link.label.replaceAll(' ', '-')}`}
-              >
-                {link.label}
-              </a>
-            </span>
-            {!link.description ? null : <p className={`text-center text-gray-500`}>{link.description}</p>}
-          </li>
-        )}
-      </ul>
-    </Layout>
-  )
-}
+      {sections.map((section) => (
+        <div>
 
-export default IndexPage
+          <div className="space-y-1 mb-3">
+            <h4 className="text-sm font-medium leading-none">
+              {section.label}
+            </h4>
+            {section.description &&
+              <p className="text-sm text-muted-foreground">
+                An open-source UI component library.
+              </p>
+            }
+          </div>
+
+          <ul
+            className="flex flex-col justify-center xmax-w-sm mx-auto"
+            key={section.label}
+          >
+            {section.links.map((link: Platform) => <Item platform={link} />)}
+          </ul>
+          <hr className="mb-4 mt-4" />
+        </div>
+      ))}
+    </Layout>
+  );
+};
+
+      //<Separator className="my-4" />
