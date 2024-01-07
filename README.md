@@ -45,3 +45,20 @@ When we run `next dev` the next time, Next.js will start looking for any `.ts` o
 Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
 
 A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+
+## Docker Build
+
+```bash
+docker build -t nextjs -f ./dockerfile .
+docker run -d -p 127.0.0.1:3000:3000 --name nextjs nextjs
+```
+
+```bash
+docker build -t nextjs-multi -f ./multi.dockerfile .
+docker run -d -p 127.0.0.1:3000:3000 --name nextjs-multi nextjs-multi
+```
+
+```bash
+docker build -t nextjs-standalone -f ./standalone.dockerfile .
+docker run -d -p 127.0.0.1:3000:3000 --name nextjs-standalone nextjs-standalone
+```

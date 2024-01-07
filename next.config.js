@@ -1,31 +1,75 @@
-const serverSettings = {}
-
-// const isGithubActions = process.env.GITHUB_ACTIONS === 'true' || false
-//
-// if (isGithubActions) {
-//   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
-//   // trim off `<owner>/`
-//
-//   serverSettings.basePath = `/${repo}`
-//   serverSettings.assetPrefix = `/${repo}/`
-//
-//   serverSettings.env = {
-//     isGithubActions,
-//     prefix: `/${repo}`,
-//   }
-// }
+const path = require('path')
+const { withContentlayer } = require('next-contentlayer')
 
 const nextConfig = {
-  output: 'standalone',
-
-  reactStrictMode: true,
   swcMinify: true,
+  reactStrictMode: true,
 
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
   },
 
-  ...serverSettings,
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
+  headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
+  },
 }
 
-module.exports = nextConfig
+// https://nextjs.org/docs/advanced-features/security-headers
+const ContentSecurityPolicy = `
+    default-src 'self' vercel.live;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live;
+    style-src 'self' 'unsafe-inline';
+    img-src * blob: data:;
+    media-src 'none';
+    connect-src *;
+    font-src 'self';
+`
+
+const securityHeaders = [
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
+  {
+    key: 'Referrer-Policy',
+    value: 'origin-when-cross-origin',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=31536000; includeSubDomains; preload',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()',
+  },
+]
+
+
+module.exports = withContentlayer(nextConfig)

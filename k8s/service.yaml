@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextjs
+  labels:
+    app: nextjs
+spec:
+  type: ClusterIP
+  selector:
+    app: nextjs
+  ports:
+    - name: nextjs
+      port: 80
+      protocol: TCP
+      targetPort: 3000

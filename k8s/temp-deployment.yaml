@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs
+  labels:
+    app: nextjs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextjs
+  template:
+    metadata:
+      labels:
+        app: nextjs
+        name: nextjs
+    spec:
+      imagePullSecrets:
+        - name: github-registry
+      containers:
+        - name: nextjs
+          image: ghcr.io/koenverburg/template-nextjs/nextjs-standalone:$TAG
+          resources:
+            limits:
+              memory: '200Mi'
+            requests:
+              memory: '100Mi'
+          ports:
+            - containerPort: 3000
+
