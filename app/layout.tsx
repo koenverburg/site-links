@@ -29,7 +29,7 @@ export default function RootLayout({
       )}>
         <Script
           defer
-          data-domain="conradtheprogrammer.com"
+          data-domain="links.conradtheprogrammer.com"
           src="https://plausible.io/js/script.js"
         />
         <ThemeProvider

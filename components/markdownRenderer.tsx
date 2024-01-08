@@ -9,7 +9,7 @@ type MdxProps = {
 
 const { trackEvent } = Plausible({
   trackLocalhost: false,
-  domain: 'conradtheprogrammer.com'
+  domain: 'links.conradtheprogrammer.com'
 });
 
 const handleClick = (label: string, url: string) => () =>
